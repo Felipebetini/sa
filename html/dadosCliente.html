@@ -1,0 +1,100 @@
+﻿<html>
+<head>
+<meta charset="UTF-8">
+<title>CADASTRO DE CLIENTES</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/sa.js"></script>
+
+</head>
+
+<body onload="pCliente()" class="center">
+<header>
+        <div id="logo">
+            <img src="../img/logo.png" />
+        </div>
+
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Voltar</a></li>
+            </ul>
+        </div>
+    </header>
+	<div class="container">
+        
+
+
+	<h1 id="h1">CADASTRO DE CLIENTES</h1>
+    <form id="form1" name = "form1" action="" method="post">
+        <div id="input1">
+            <div>
+             <label for="nome_cliente">Nome: </label>
+                <input type="text" id="nome_cliente" placeholder="Nome do Cliente" onkeyup = "checkform()" onblur="colorForm()"  />
+             </div>
+            <div onload="mascararCpf()">
+                <label for="cpf">CPF: </label>
+                <input class="form-control" type="text" id="cpf" placeholder="###.###.###-##" onkeyup="mascara('###.###.###-##',this,event,true);checkform();" maxlength="14" onblur="colorForm();vCliente()" />
+            </div>
+            <div>
+                <label for="nascimento">Data de Nascimento: </label>
+                <input type="date" id="nascimento" onblur="colorForm()"/>
+             </div>
+            <div>
+                <label for="nome_mae">Nome da mãe: </label>
+                <input type="text" id="nome_mae"  onblur="checkform();colorForm()"/>
+            </div>
+            <div>
+                <label for="cep">CEP: </label>
+                <input type="text" id="cep" placeholder="CEP" onkeyup = "MascaraCep(form1.cep);checkform()" onblur="colorForm()" maxlength="9"/>
+            </div>
+            <div>
+                <label for="rua">Rua: </label>
+                <input type="text" id="rua" placeholder="Rua" onkeyup = "checkform()" onblur="colorForm()"/>
+            </div>
+            <div>
+                <label for="numero">Número: </label>
+                <input type="number" id="numero" onkeyup = "checkform()" onblur="colorForm()"/>
+            </div>
+            <div>
+                <label for="complemento">Complemento: </label>
+                <input type="text" id="complemento" onkeyup = "checkform()"/>
+            </div>
+            <div>
+                <label for="bairro">Bairro: </label>
+                <input type="text" id="bairro" onkeyup = "checkform()" onblur="colorForm()"/>
+            </div>
+            <div>
+                <label for="comboCidade">Cidade: </label>
+                <input type="text" id="comboCidade" disabled onkeyup = "checkform()" onblur="colorForm()" />
+            </div>
+            <div>
+                <label>Estado: </label>
+                    <select  id="comboEstado" onkeyup="checkform()" onblur="colorForm()">
+                        <option value="">Selecione:</option>
+                    </select>
+            </div>
+            <div>
+                <label for="carregarPais()">País: </label>
+                <input type="text" id="nome_pais" disabled onkeyup = "checkform()" onblur="colorForm()"/>
+            </div>
+            <div>
+                <label for="tel">Telefone: </label>
+                <input class="form-control" type="tel" id="tel" placeholder="(##) ####-####" onkeyup="mascara('(##) ####-####',this,event,true);checkform();" maxlength="14" onblur="colorForm()"/>
+            </div>
+            <div>
+                <label for="cel">Celular: </label>
+                <input class="form-control" type="tel" id="cel" placeholder="(##) ####-#####" onkeyup="mascara('(##) ####-#####',this,event,true);checkform()" maxlength="15" onblur="colorForm()" />
+            </div>
+            <div>
+                <label for="email">E-mail: </label>
+                <input type="email" id="email" onkeyup = "checkform()"onblur="colorForm()"/>
+            </div>
+        </div>
+    </form>
+        <div class="div-button">
+            <button onclick="javascript:salvarCliente()" id="button_name">Salvar Cliente</button>
+
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+	integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt"
+	crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>CADASTRO DE CLIENTES</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script src="../js/sa.js"></script>
+</head>
+<body>
+    <header>
+        <div id="logo">
+           <a href=../index.html> <img  src="../img/logo.png" /></a>
+        </div>
+
+        <div class="container">
+            <ul>
+            	<li><a id="voltar-buscar" href="../index.html">Voltar</a></li>
+            </ul>
+        </div>
+    </header>
+    <h2 class="center"> Relatórios de Clientes </h2>
+    <script type="text/javascript">
+    	
+    	let clientesCadastrados = JSON.parse(localStorage.getItem('listaCliente'));
+    	let pesquisa = prompt('Digite o nome do Cliente:');
+    	
+    	let encontrado = false;
+    	
+    	for (let i=0; i < clientesCadastrados.length; i++){
+    		let cliente = clientesCadastrados[i];
+    		let nomeCliente = cliente.nome.toLowerCase();
+    		let busca = pesquisa.toLowerCase();
+    		if (nomeCliente.search(busca) != -1){
+    			console.log(nomeCliente + ' no indice ' + i);
+    			encontrado = true;
+    			console.log(cliente.nome + ' ' + cliente.cpf);
+    			document.write('Nome: '+ '  ' + cliente.nome + '  '+'CPF: ' + cliente.cpf);
+    			alert('OK,  '+cliente.nome+'  já existe! Cliente Cadastrado!')
+    		}
+    		
+    		
+    	}
+if(!encontrado){
+	document.write('Cliente Não localizado!');
+}
+    </script>
+    <a href=estado.html><button type="button" class="btn btn-danger" >Cadastrar?</button></a>
+</html>
+	
+
+
+
+
+
+

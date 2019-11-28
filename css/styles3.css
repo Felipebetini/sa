@@ -1,0 +1,124 @@
+body {
+    margin: 1px;
+    padding: 0px;
+    font-family: "MuseoSans", Arial, sans-serif;
+    background-color:black;
+    color:white;
+}
+
+img {
+    margin: 2px;
+    border: 1px solid #ccc;
+    float: right;
+    width: 180px;
+}
+
+.container {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+    position: center;
+}
+.center{
+color: white; text-align:center;
+}
+
+p{
+    color:White; font-size:20px;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+    li a, .dropbtn {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        min-width:100%;
+    }
+
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: Blue;
+        }
+
+    li.dropdown {
+        display: inline-block;
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 182px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        
+    }
+
+        .dropdown-content a:hover {
+            background-color: #a8a4a4
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+table {
+	width: 100%;
+	font: 15px Calibri;
+}
+
+table, td{
+	border: solid 1px #fbfafa;
+	border-collapse: collapse;
+	padding: 1px 1px 1px;
+	text-align: center;
+}
+
+
+input[type='button'] {
+	font: 15px Calibri;
+	cursor: pointer;
+	border: none;
+	color: #FFF;
+	display:table-row;
+	
+}
+
+input[type='text'], select {
+	font: 17px Calibri;
+	text-align: center;
+	border: solid 1px #CCC;
+	width: auto;
+	padding: 2px 3px;
+}
+ th { 
+     border-collapse:collapse
+
+    border-bottom-color:white;
+    text-align: center;
+    border-right: 1px solid ;
+    border: white;
+}
+

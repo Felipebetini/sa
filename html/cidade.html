@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>CIDADE</title>
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
+<script src="../js/sa.js"></script>
+</head>
+<body onload="javascript:carregarEstados()">
+  
+    <header>
+        <div id="logo">
+            <img src="../img/logo.png"/>
+        </div>
+        <div class="container">
+            <ul>
+                <li><a href="../html/estado.html">Estado</a></li>
+        </div>
+    </header>
+
+    <h1 class="center">CADASTRO DE CIDADE</h1>
+    <form id="form1" action="" method="post">
+        <div>
+            <label for="nome_cidade">Cidade: </label>
+            <input type="text" id="nome_cidade" placeholder="Nome da Cidade" required />
+        </div>
+        
+        <div>
+            <label>Estado: </label>
+            <select id="comboEstado">
+                <option value="">Selecione:</option>
+            </select>
+        </div>
+
+        <div class="div-button">
+            <button onclick="javascript:salvarCidade()">Salvar Cidade</button>
+            
+        </div>
+    </form>
+
+</body>
+</html>
