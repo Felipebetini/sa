@@ -20,10 +20,6 @@ label {
 	text-align: right;
 }
 
-header {
-	height:180px;
-}
-
 input, textarea {
 	/* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
 	font: 1em sans-serif;
