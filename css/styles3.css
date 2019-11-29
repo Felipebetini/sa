@@ -18,6 +18,7 @@ img {
     padding: 0px;
     background-color: black;
     position: center;
+    max-width: 100%;
 }
 .center{
 color: white; text-align:center;
@@ -114,7 +115,7 @@ input[type='text'], select {
 	padding: 2px 3px;
 }
  th { 
-     border-collapse:collapse
+     border-collapse:collapse;
 
     border-bottom-color:white;
     text-align: center;
@@ -122,3 +123,6 @@ input[type='text'], select {
     border: white;
 }
 
+.tamanho{
+	max-width: 100%;
+}

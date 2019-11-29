@@ -1,4 +1,4 @@
-/*funçoes para tela de estado*/
+/*funçoes para tela de estado
 function carregarPais(){
 	const pais = "Brasil";
 	document.getElementById("nome_pais").value = pais;
@@ -38,7 +38,7 @@ function salvarEstado(){
     let javascript = AbrirPagina('../html/cidade.html');
 }
 
-/*funções para tela de cidades*/
+funções para tela de cidades
 
 function carregarEstados(){
 	let listaEstadosStr = localStorage.getItem("listaEstados");
@@ -80,7 +80,7 @@ function salvarCidade() {
     listaCidadesStr = JSON.stringify(listaCidades);
 
     localStorage.setItem("listaCidades", listaCidadesStr);
-    
+    let javascript = AbrirPagina('../html/dadosCliente.html');
 }
 
 function Cidade(nome, estado){
@@ -718,3 +718,29 @@ var crudClientes = new function() {
 crudClientes.criarTabela();
 
 
+
+function pesquisa(){
+
+let clientesCadastrados = JSON.parse(localStorage.getItem('listaCliente'));
+let pesquisa = document.getElementById("buscar").value;
+
+let encontrado = false;
+
+for (let i=0; i < clientesCadastrados.length; i++){
+	let cliente = clientesCadastrados[i];
+	let nomeCliente = cliente.nome.toLowerCase();
+	let busca = pesquisa.toLowerCase();
+	if (nomeCliente.search(busca) != -1){
+		console.log(nomeCliente + ' no indice ' + i);
+		encontrado = true;
+		console.log(cliente.nome + ' ' + cliente.cpf);
+		document.write('Nome: '+ '  ' + cliente.nome + '  '+'CPF: ' + cliente.cpf);
+		alert('OK,  '+cliente.nome+'  já existe! Cliente Cadastrado!')
+	}
+	
+	
+}
+if(!encontrado){
+alert('Cliente Não localizado!');
+}
+}*/

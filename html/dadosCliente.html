@@ -4,15 +4,13 @@
 <title>CADASTRO DE CLIENTES</title>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/sa.js"></script>
+    <script src="../js/cliente.js"></script>
 
 </head>
 
 <body onload="pCliente()" class="center">
 <header>
-        <div id="logo">
-            <img src="../img/logo.png" />
-        </div>
+      
 
         <div class="container">
             <ul>
@@ -20,7 +18,7 @@
             </ul>
         </div>
     </header>
-	<div class="container">
+	
         
 
 
@@ -65,7 +63,7 @@
             </div>
             <div>
                 <label for="comboCidade">Cidade: </label>
-                <input type="text" id="comboCidade" disabled onkeyup = "checkform()" onblur="colorForm()" />
+                <input type="text" id="comboCidade"  onkeyup = "checkform()" onblur="colorForm()" />
             </div>
             <div>
                 <label>Estado: </label>
@@ -75,7 +73,7 @@
             </div>
             <div>
                 <label for="carregarPais()">País: </label>
-                <input type="text" id="nome_pais" disabled onkeyup = "checkform()" onblur="colorForm()"/>
+                <input type="text" id="nome_pais"  onkeyup = "checkform()" onblur="colorForm()"/>
             </div>
             <div>
                 <label for="tel">Telefone: </label>
@@ -92,7 +90,7 @@
         </div>
     </form>
         <div class="div-button">
-            <button onclick="javascript:salvarCliente()" id="button_name">Salvar Cliente</button>
+            <button onclick="javascript:pesquisa()">Buscar</button>
 
         </div>
 
