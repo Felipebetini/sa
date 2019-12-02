@@ -22,19 +22,25 @@ function salvarEstado(){
 	if(listaEstadosStr != null){
 		listaEstados= JSON.parse(listaEstadosStr);
 	}
-	let encontrei = false;
+	let encontrado = false;
 	for(let i=0; i<listaEstados.length;i++){
 		if(listaEstados[i].nome == estado.nome){
-			encontrei = true;
+			encontrado = true;
+			alert('Estado ja existe!');
+            break;
 		}
-	}if(!encontrei){
+	}if(!encontrado){
 	listaEstados.push(estado);
 	}
+	
 	listaEstadosStr = JSON.stringify(listaEstados);
 	
     localStorage.setItem("listaEstados", listaEstadosStr);
-    let javascript = AbrirPagina('../html/cidade.html');
+    
+    location.reload();
+   // let javascript = AbrirPagina('../html/cidade.html');
 }
+
 
 function AbrirPagina(link){
 	document.getElementById("form1").action = link;
