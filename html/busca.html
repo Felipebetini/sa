@@ -1,36 +1,33 @@
 ﻿<html>
+
 <head>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
-	integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt"
-	crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>CADASTRO DE CLIENTES</title>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script src="../js/pesquisa.js"></script>
 </head>
+
 <body>
     <header>
-       
+
 
         <div class="container">
             <ul>
-            	<li><a id="voltar-buscar" href="../index.html">Voltar</a></li>
+                <li><a id="voltar-buscar" href="../index.html">Voltar</a></li>
             </ul>
         </div>
     </header>
     <h2 class="center"> Relatórios de Clientes </h2>
-    <div>
-    <input id="buscar" type="search" name="busca" class="busca-pesquisa" placeholder="Nome do Cliente">
-    <button type="submit" onclick="javascript:pesquisa()">Buscar</button>
-  </div>
-    
-    <a href=estado.html><button style="visibility:hidden;"  type="button" id="cadastrar" class="btn btn-danger" >Cadastrar?</button></a>
+    <div id='divBusca'>
+        <input id="buscar" type="search" name="busca" class="busca-pesquisa" placeholder="Nome do Cliente">
+        <button type="submit" onclick="javascript:pesquisa()">Buscar</button>
+    </div>
+    <div id="btnCadastrar">
+        <a href=estado.html><button style="visibility:hidden;"  type="button" id="cadastrar" class="btn btn-danger" >Cadastrar?</button></a>
+    </div>
+
+</body>
+
+
 </html>
-	
-
-
-
-
-
-
