@@ -1,4 +1,4 @@
-/*funçoes para tela de estado
+/*funçoes para tela de estado*/
 function carregarPais(){
 	const pais = "Brasil";
 	document.getElementById("nome_pais").value = pais;
@@ -38,7 +38,7 @@ function salvarEstado(){
     let javascript = AbrirPagina('../html/cidade.html');
 }
 
-funções para tela de cidades
+/*funções para tela de cidades*/
 
 function carregarEstados(){
 	let listaEstadosStr = localStorage.getItem("listaEstados");
@@ -55,6 +55,7 @@ function carregarEstados(){
 		comboEstado.add(option);
 	}
 }
+
 function salvarCidade() {
     let input = document.getElementById("nome_cidade");
     let nome = input.value;
@@ -80,7 +81,7 @@ function salvarCidade() {
     listaCidadesStr = JSON.stringify(listaCidades);
 
     localStorage.setItem("listaCidades", listaCidadesStr);
-    let javascript = AbrirPagina('../html/dadosCliente.html');
+    alert("Cidade Salva com Sucesso! Retorne a tela Inicial!")
 }
 
 function Cidade(nome, estado){
@@ -92,7 +93,7 @@ function carregarCidade() {
     let listaCidadesStr = localStorage.getItem("listaCidades");
     let listaCidades = [];
     if (listaCidadesStr != null) {
-        listaEstados = JSON.parse(listaCidadesStr);
+        listaCidades = JSON.parse(listaCidadesStr);
     }
     let comboCidade = document.getElementById("comboCidade");
     let option;
@@ -129,33 +130,33 @@ function Cliente(nome, cpf, nascimento, nome_mae, rua, numero, bairro, tel, cel,
 
 function salvarCliente() {
 	let input = document.getElementById("nome_cliente");
-	let nome = input.value;
+	let nome = input.value.trim();
 	input = document.getElementById("cpf");
-    let cpf = input.value;
+    let cpf = input.value.trim();
     input = document.getElementById("nascimento");
-    let nascimento = input.value;
+    let nascimento = input.value.trim();
     input = document.getElementById("nome_mae");
-    let nome_mae = input.value;
+    let nome_mae = input.value.trim();
 	input = document.getElementById("rua");
-	let rua = input.value;
+    let rua = input.value.trim();
 	input = document.getElementById("numero");
-	let numero = input.value;
+    let numero = input.value.trim();
 	input = document.getElementById("bairro");
-	let bairro = input.value;
+    let bairro = input.value.trim();
 	input = document.getElementById("tel");
-	let tel = input.value;
+	let tel = input.value.trim;
 	input = document.getElementById("cel");
-	let cel = input.value;
+    let cel = input.value.trim();
 	input = document.getElementById("email");
-	let email = input.value;
+    let email = input.value.trim();
 	input = document.getElementById("comboEstado");
-	let estado = input.value;
+    let estado = input.value.trim();
 	input = document.getElementById("comboCidade");
-	let cidade = input.value;
+    let cidade = input.value.trim();
 	input = document.getElementById("cep");
-    let cep = input.value;
+    let cep = input.value.trim();
     input = document.getElementById("complemento");
-    let complemento = input.value;
+    let complemento = input.value.trim();
 	
 
     let cliente = new Cliente(nome, cpf, nascimento, nome_mae, rua, numero, bairro, tel, cel, email, estado, cidade, cep, complemento);
@@ -171,7 +172,8 @@ function salvarCliente() {
 	
     localStorage.setItem("listaCliente", listaClienteStr);
     //Abrir página para Novo Cadastro
-    //let javascript = AbrirPagina('../index.html');
+    let javascript = AbrirPagina('../html/dadosCliente.html');
+    alert("Cliente Salvo!");
 }
 
 
@@ -202,6 +204,30 @@ function carregarCliente(){
         comboCliente.add(option);
 		}
 }
+function busca() {
+    let clientesCadastrados = JSON.parse(localStorage.getItem('listaCliente'));
+    let pesquisa = document.getElementById("buscar").value;
+        let encontrado = false;
+    for (let i = 0; i < clientesCadastrados.length; i++) {
+        let cliente = clientesCadastrados[i];
+        let nomeCliente = cliente.nome.toLowerCase();
+        let busca = pesquisa.toLowerCase();
+        if (nomeCliente.search(busca) != -1) {
+            console.log(nomeCliente + ' no indice ' + i);
+            encontrado = true;
+            console.log(cliente.nome + ' ' + cliente.cpf);
+            let result = document.getElementById("resultBusca").value;
+            alert('OK,  ' + cliente.nome + '  já existe! Cliente Cadastrado!')
+            result;
+        }
+
+
+    }
+    if (!encontrado) {
+        document.write('Cliente Não localizado!');
+    } 
+}
+
 function checkform () {
 	var f = document.getElementById('form1').elements;
 	var cansubmit = true;
@@ -237,7 +263,7 @@ function vCliente (){
 
     for (var i=0; i < clientesCadastrados.length; i++){
         var cliente = clientesCadastrados[i];
-        var cpfCliente = cliente.cpf
+        var cpfCliente = cliente.cpf;
         var busca = document.getElementById('cpf').value;
         if (cpfCliente.search(busca) != -1){
             encontrado = true;
@@ -245,7 +271,7 @@ function vCliente (){
             alert('CPF: '+busca+' já está no cadastro');
 
             busca.value = document.getElementById('cpf').value = "";
-			break
+            break;
 
 
         }
@@ -289,9 +315,8 @@ function vCliente (){
 		//colorForm ();
         //carregarCliente();
         carregarEstados();
-		salvarCliente();
-
-
+        carregarCidade();
+        carregarPais()
 	};
 
 	
@@ -716,31 +741,3 @@ var crudClientes = new function() {
 }
 
 crudClientes.criarTabela();
-
-
-
-function pesquisa(){
-
-let clientesCadastrados = JSON.parse(localStorage.getItem('listaCliente'));
-let pesquisa = document.getElementById("buscar").value;
-
-let encontrado = false;
-
-for (let i=0; i < clientesCadastrados.length; i++){
-	let cliente = clientesCadastrados[i];
-	let nomeCliente = cliente.nome.toLowerCase();
-	let busca = pesquisa.toLowerCase();
-	if (nomeCliente.search(busca) != -1){
-		console.log(nomeCliente + ' no indice ' + i);
-		encontrado = true;
-		console.log(cliente.nome + ' ' + cliente.cpf);
-		document.write('Nome: '+ '  ' + cliente.nome + '  '+'CPF: ' + cliente.cpf);
-		alert('OK,  '+cliente.nome+'  já existe! Cliente Cadastrado!')
-	}
-	
-	
-}
-if(!encontrado){
-alert('Cliente Não localizado!');
-}
-}*/

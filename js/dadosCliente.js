@@ -1,3 +1,4 @@
+// JavaScript source code
 function Cliente(nome, cpf, nascimento, nome_mae, rua, numero, bairro, tel, cel, email, estado, cidade, cep, complemento) {
     this.nome = nome;
     this.cpf = cpf;
@@ -14,36 +15,47 @@ function Cliente(nome, cpf, nascimento, nome_mae, rua, numero, bairro, tel, cel,
     this.cep = cep;
     this.complemento = complemento;
 }
+function comboCliente() {
+    let input = document.getElementById("nome_cliente");
+    let cliente = input.options[input.selectedIndex].value;
+    let option;
+    option.value = listaCliente[index].nome;
+}
+
+function AbrirPagina(link) {
+    document.getElementById("form1").action = link;
+    document.getElementById("form1").submit();
+}
 
 function salvarCliente() {
     let input = document.getElementById("nome_cliente");
-    let nome = input.value;
+    let nome = input.value.trim();
     input = document.getElementById("cpf");
-    let cpf = input.value;
+    let cpf = input.value.trim();
     input = document.getElementById("nascimento");
-    let nascimento = input.value;
+    let nascimento = input.value.trim();
     input = document.getElementById("nome_mae");
-    let nome_mae = input.value;
+    let nome_mae = input.value.trim();
     input = document.getElementById("rua");
-    let rua = input.value;
+    let rua = input.value.trim();
     input = document.getElementById("numero");
-    let numero = input.value;
+    let numero = input.value.trim();
     input = document.getElementById("bairro");
-    let bairro = input.value;
+    let bairro = input.value.trim();
     input = document.getElementById("tel");
-    let tel = input.value;
+    let tel = input.value.trim;
     input = document.getElementById("cel");
-    let cel = input.value;
+    let cel = input.value.trim();
     input = document.getElementById("email");
-    let email = input.value;
+    let email = input.value.trim();
     input = document.getElementById("comboEstado");
-    let estado = input.value;
+    let estado = input.value.trim();
     input = document.getElementById("comboCidade");
-    let cidade = input.value;
+    let cidade = input.value.trim();
     input = document.getElementById("cep");
-    let cep = input.value;
+    let cep = input.value.trim();
     input = document.getElementById("complemento");
-    let complemento = input.value;
+    let complemento = input.value.trim();
 
 
     let cliente = new Cliente(nome, cpf, nascimento, nome_mae, rua, numero, bairro, tel, cel, email, estado, cidade, cep, complemento);
@@ -58,11 +70,39 @@ function salvarCliente() {
     listaClienteStr = JSON.stringify(listaCliente);
 
     localStorage.setItem("listaCliente", listaClienteStr);
-
-    //Abrir pÃ¡gina para Novo Cadastro
-    let javascript = location.reload();
+    //Abrir página para Novo Cadastro
+    let javascript = AbrirPagina('../html/dadosCliente.html');
+    alert("Cliente Salvo!");
 }
 
+
+//função para carregar lista de clientes e atributos da lista
+function carregarCliente() {
+    let cidadeStr = localStorage.getItem("cidade");
+    let cidade = JSON.parse(cidadeStr);
+    let input = document.getElementById("comboCidade");
+    input.value = cidade.nome;
+    input = document.getElementById("comboEstado");
+    input.value = cidade.estado;
+    input = document.getElementById("pais");
+    input = carregarPais();
+
+    let listaClienteStr = localStorage.getItem("listaCliente");
+    listaCliente = [];
+    if (listaCliente != null) {
+        listaCliente = JSON.parse(listaClienteStr);
+    }
+    let comboCliente = document.getElementById("comboCliente");
+    let option;
+    for (let index = 0; index < listaCliente.length; index++) {
+        option = document.createElement('option');
+        option.text = listaCliente[index].nome;
+        option.value = listaCliente[index].nome;
+        comboCliente.add(option);
+    }
+}
+
+//checagem dos dados para permissão de gravação
 function checkform() {
     var f = document.getElementById('form1').elements;
     var cansubmit = true;
@@ -77,15 +117,14 @@ function checkform() {
     }
 
 }
-
+//inform ao usuário sobre os dados digitados
 function colorForm() {
     var getForm = [];
     getForm = document.getElementById('form1').elements;
     for (var k = 0; k < getForm.length; k++) {
         if (getForm[k].value !== "") {
             var inputForm = document.getElementById(getForm[k].id).style.borderColor = "blue";
-        }
-        if (getForm[k].value === "") {
+        } if (getForm[k].value === "") {
             inputForm = document.getElementById(getForm[k].id).style.borderColor = "red";
         }
     }
@@ -100,106 +139,88 @@ function vCliente() {
 
     for (var i = 0; i < clientesCadastrados.length; i++) {
         var cliente = clientesCadastrados[i];
-        var cpfCliente = cliente.cpf
+        var cpfCliente = cliente.cpf;
         var busca = document.getElementById('cpf').value;
         if (cpfCliente.search(busca) != -1) {
             encontrado = true;
 
-            alert('CPF: ' + busca + ' jÃ¡ estÃ¡ no cadastro');
+            alert('CPF: ' + busca + ' já está no cadastro');
 
             busca.value = document.getElementById('cpf').value = "";
-            break
+            break;
 
 
         }
 
 
     }
-
-}
-
-function buscaCep() {
-    $("#cep").focusout(function() {
-        //InÃ­cio do Comando AJAX
+    //busca logradouro em sistema Jquery na web, retornando o nome do logradouro e seus componentes
+} function buscaCep() {
+    $("#cep").focusout(function () {
+        //Início do Comando AJAX
         $.ajax({
-            //O campo URL diz o caminho de onde virÃ¡ os dados
-            //Ã‰ importante concatenar o valor digitado no CEP
+            //O campo URL diz o caminho de onde virá os dados
+            //É importante concatenar o valor digitado no CEP
             url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/unicode/',
-            //Aqui vocÃª deve preencher o tipo de dados que serÃ¡ lido,
+            //Aqui você deve preencher o tipo de dados que será lido,
             //no caso, estamos lendo JSON.
             dataType: 'json',
-            //SUCESS Ã© referente a funÃ§Ã£o que serÃ¡ executada caso
+            //SUCESS é referente a função que será executada caso
             //ele consiga ler a fonte de dados com sucesso.
-            //O parÃ¢metro dentro da funÃ§Ã£o se refere ao nome da variÃ¡vel
-            //que vocÃª vai dar para ler esse objeto.
-            success: function(resposta) {
-                //Agora basta definir os valores que vocÃª deseja preencher
+            //O parâmetro dentro da função se refere ao nome da variável
+            //que você vai dar para ler esse objeto.
+            success: function (resposta) {
+                //Agora basta definir os valores que você deseja preencher
                 //automaticamente nos campos acima.
                 $("#rua").val(resposta.logradouro);
                 $("#complemento").val(resposta.complemento);
                 $("#bairro").val(resposta.bairro);
-                //Vamos incluir para que o NÃºmero seja focado automaticamente
-                //melhorando a experiÃªncia do usuÃ¡rio
+                //Vamos incluir para que o Número seja focado automaticamente
+                //melhorando a experiência do usuário
                 $("#numero").focus();
             }
         });
     });
 }
 
-function carregarEstados() {
-    let listaEstadosStr = localStorage.getItem("listaEstados");
-    let listaEstados = [];
-    if (listaEstadosStr != null) {
-        listaEstados = JSON.parse(listaEstadosStr);
-    }
-    let comboEstado = document.getElementById("comboEstado");
-    let option;
-    for (let index = 0; index < listaEstados.length; index++) {
-        option = document.createElement("option");
-        option.text = listaEstados[index].nome;
-        option.value = listaEstados[index].nome;
-        comboEstado.add(option);
-    }
-}
-
+//executa as funções selecionadas para salvamento, carregamento verificação e complementos
 var pCliente;
-pCliente = function() {
+pCliente = function () {
     buscaCep();
     checkform();
+    //colorForm ();
+    //carregarCliente();
     carregarEstados();
-
-
-
+    carregarCidade();
+    carregarPais();
 };
-
+function validar() {
+    let nome = document.getElementById('nome');
+    if (!nome.value.trim()) {
+        nome.classList.add('erro-validacao');
+    } else {
+        nome.classList.remove('erro-validacao');
+        alert('Problemas em Validar!');
+    }
+}
+//mascaras para CPF e Telefones 
 function mascaras() {
-    for (var o = document.getElementsByTagName("input"), e = 0; e < o.length; e++) "text" == o[e].type && (o[e].style.backgroundColor = "", o[e].style.borderColor = "")
+    for (var o = document.getElementsByTagName("input"), e = 0; e < o.length; e++)"text" == o[e].type && (o[e].style.backgroundColor = "", o[e].style.borderColor = "")
 }
-
 function coresMask(o) {
-    var e = o.value,
-        r = e.length,
-        t = o.maxLength;
-    0 == r ? (o.style.borderColor = "", o.style.backgroundColor = "") : r < t ? (o.style.borderColor = corIncompleta, o.style.backgroundColor = corIncompleta) : (o.style.borderColor = corCompleta, o.style.backgroundColor = corCompleta)
+    var e = o.value, r = e.length,
+        t = o.maxLength; 0 == r ? (o.style.borderColor = "", o.style.backgroundColor = "") : r < t ? (o.style.borderColor = corIncompleta, o.style.backgroundColor = corIncompleta) : (o.style.borderColor = corCompleta, o.style.backgroundColor = corCompleta)
 }
-
 function mascara(o, e, r, t) {
-    var l = e.selectionStart,
-        a = e.value;
-    a = a.replace(/\D/g, "");
-    var s = a.length,
-        c = o.length;
-    window.event ? id = r.keyCode : r.which && (id = r.which), cursorfixo = !1, l < s && (cursorfixo = !0);
+    var l = e.selectionStart, a = e.value; a = a.replace(/\D/g, "");
+    var s = a.length, c = o.length; window.event ? id = r.keyCode : r.which && (id = r.which), cursorfixo = !1, l < s && (cursorfixo = !0);
     var n = !1;
     if ((16 == id || 19 == id || id >= 33 && id <= 40) && (n = !0), ii = 0, mm = 0, !n) {
-        if (8 != id)
-            for (e.value = "", j = 0, i = 0; i < c && ("#" == o.substr(i, 1) ? (e.value += a.substr(j, 1), j++) : "#" != o.substr(i, 1) && (e.value += o.substr(i, 1)), 8 == id || cursorfixo || l++, j != s + 1); i++);
+        if (8 != id) for (e.value = "", j = 0, i = 0; i < c && ("#" == o.substr(i, 1) ? (e.value += a.substr(j, 1), j++) : "#" != o.substr(i, 1) && (e.value += o.substr(i, 1)), 8 == id || cursorfixo || l++ , j != s + 1); i++);
         t && coresMask(e)
-    }
-    cursorfixo && !n && l--, e.setSelectionRange(l, l)
+    } cursorfixo && !n && l-- , e.setSelectionRange(l, l)
 }
-var corCompleta = "#99ff8f",
-    corIncompleta = "#eff70b";
+var corCompleta = "#99ff8f", corIncompleta = "#eff70b";
 
 
 function mascararTel() {
@@ -228,7 +249,8 @@ function coresMask(t) {
     if (m == 0) {
         t.style.borderColor = "";
         t.style.backgroundColor = "";
-    } else if (m < x) {
+    }
+    else if (m < x) {
         t.style.borderColor = corIncompleta;
         t.style.backgroundColor = corIncompleta;
     } else {

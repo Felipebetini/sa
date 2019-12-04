@@ -1,13 +1,26 @@
-function carregarPais() {
-    const pais = "Brasil";
-    document.getElementById("nome_pais").value = pais;
-}
-
+// JavaScript source code
+//construtor para Estado
 function Estado(nome, pais) {
     this.nome = nome;
     this.pais = pais;
 }
 
+function carregarPais() {
+    const pais = "Brasil";
+    document.getElementById("nome_pais").value = pais;
+}
+
+function AbrirPagina(link) {
+    document.getElementById("form1").action = link;
+    document.getElementById("form1").submit();
+}
+function comboEstado() {
+    let input = document.getElementById("estado");
+    let estado = input.options[input.selectedIndex].value;
+    let option;
+    option.value = listaEstado[index].nome;
+
+}
 function salvarEstado() {
     let input = document.getElementById("nome_estado");
     let nome = input.value;
@@ -22,28 +35,31 @@ function salvarEstado() {
     if (listaEstadosStr != null) {
         listaEstados = JSON.parse(listaEstadosStr);
     }
-    let encontrado = false;
+    let encontrei = false;
     for (let i = 0; i < listaEstados.length; i++) {
-        if (listaEstados[i].nome === estado.nome) {
-            encontrado = true;
-            alert('Estado ja cadastrado!');
-            break;
+        if (listaEstados[i].nome == estado.nome) {
+            encontrei = true;
         }
-    }
-    if (!encontrado) {
+    } if (!encontrei) {
         listaEstados.push(estado);
     }
-
     listaEstadosStr = JSON.stringify(listaEstados);
 
     localStorage.setItem("listaEstados", listaEstadosStr);
-
-    location.reload();
     let javascript = AbrirPagina('../html/cidade.html');
 }
-
-
-function AbrirPagina(link) {
-    document.getElementById("form1").action = link;
-    document.getElementById("form1").submit();
+function carregarEstados() {
+    let listaEstadosStr = localStorage.getItem("listaEstados");
+    let listaEstados = [];
+    if (listaEstadosStr != null) {
+        listaEstados = JSON.parse(listaEstadosStr);
+    }
+    let comboEstado = document.getElementById("comboEstado");
+    let option;
+    for (let index = 0; index < listaEstados.length; index++) {
+        option = document.createElement("option");
+        option.text = listaEstados[index].nome;
+        option.value = listaEstados[index].nome;
+        comboEstado.add(option);
+    }
 }

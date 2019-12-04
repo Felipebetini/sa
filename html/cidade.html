@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>CIDADE</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <script src="../js/cidade.js"></script>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>CIDADE</title>
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
+<script src="../js/cidade.js"></script>
+<script src="../js/estado.js"></script>
 </head>
-
 <body onload="javascript:carregarEstados()">
-
+  
     <header>
-
         <div class="container">
             <ul>
-                <li><a href="../html/estado.html">Estado</a></li>
+                <li><a href="../index.html">Voltar</a></li>
             </ul>
         </div>
-
     </header>
-
-
     <h1 class="center">CADASTRO DE CIDADE</h1>
     <form id="form1" action="" method="post">
         <div>
-            <label for="nome_cidade">Cidade: </label> <input type="text" id="nome_cidade" placeholder="Nome da Cidade" required />
+            <label for="nome_cidade">Cidade: </label>
+            <input type="text" id="nome_cidade" placeholder="Nome da Cidade" required />
         </div>
-
         <div>
-            <label>Estado: </label> <select id="comboEstado">
-				<option value="">Selecione:</option>
-			</select>
+            <label>Estado: </label>
+            <select id="comboEstado">
+                <option value="">Selecione:</option>
+            </select>
         </div>
-
         <div class="div-button">
             <button onclick="javascript:salvarCidade()">Salvar Cidade</button>
-
+            
         </div>
     </form>
 
 </body>
-
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>CADASTRO DE CLIENTES</title>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <script src="../js/pesquisa.js"></script>
+    <script src="../js/busca.js"></script>
 </head>
 
 <body>
@@ -18,10 +18,22 @@
             </ul>
         </div>
     </header>
-    <h2 class="center"> Relatórios de Clientes </h2>
+
+
+    <h2 class="center"> Pesquisa de Clientes </h2>
     <div id='divBusca'>
         <input id="buscar" type="search" name="busca" class="busca-pesquisa" placeholder="Nome do Cliente">
         <button type="submit" onclick="javascript:pesquisa()">Buscar</button>
+    </div>
+    <div id="divCliente" style="display: none;">
+        <table id="tabelaCliente">
+            <tr>
+                <th>Cliente</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+            </tr>
+        </table>
+
     </div>
     <div id="btnCadastrar">
         <a href=estado.html><button style="visibility:hidden;"  type="button" id="cadastrar" class="btn btn-danger" >Cadastrar?</button></a>
