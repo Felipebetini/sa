@@ -46,7 +46,8 @@ function salvarEstado() {
     listaEstadosStr = JSON.stringify(listaEstados);
 
     localStorage.setItem("listaEstados", listaEstadosStr);
-    let javascript = AbrirPagina('../html/cidade.html');
+
+    alert("Estado Salvo com Sucesso! Retorne a tela Inicial!")
 }
 function carregarEstados() {
     let listaEstadosStr = localStorage.getItem("listaEstados");

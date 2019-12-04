@@ -2,10 +2,10 @@ function pesquisa() {
 
     let clientesCadastrados = JSON.parse(localStorage.getItem('listaCliente'));
     let pesquisa = document.getElementById("buscar").value;
-    let apagaTabela = document.getElementById("tabelaCliente").rows.length;
+    /*let apagaTabela = document.getElementById("tabelaCliente").rows.length;
     for (let j = 1; j < apagaTabela; j++) {
         document.getElementById("tabelaCliente").deleteRow(j);
-    }
+    }*/
     let encontrado = false;
 
 

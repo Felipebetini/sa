@@ -464,3 +464,11 @@ label {
     margin: auto;
     margin-top: 80px;
 }
+
+#comboCidade {
+    font-size: 12px;
+}
+
+#comboEstado {
+    font-size: 12px;
+}
